@@ -54,7 +54,8 @@ public class MaquinaExpendedoraMejorada {
      * Imprime un billete para el cliente actual
      */
     public void imprimirBillete() {
-        if (balanceClienteActual >= precioBillete) {        
+        int cantidadDineroQueFalta = precioBillete - balanceClienteActual;
+        if (cantidadDineroQueFalta <= 0) {        
             // Simula la impresion de un billete
             System.out.println("##################");
             System.out.println("# Billete de tren:");
@@ -67,11 +68,10 @@ public class MaquinaExpendedoraMejorada {
             totalDineroAcumulado = totalDineroAcumulado + precioBillete;
             // Reduce el balance del cliente actual dejandole seguir utilizando la maquina
             balanceClienteActual = balanceClienteActual - precioBillete;
-        }
+        }  
         else {
-            System.out.println("Necesitas introducir " + (precioBillete - balanceClienteActual) + " euros mas!");
-                    
-        }            
+            System.out.println(" Dinero insuficiente, faltan " + cantidadDineroQueFalta + " euros ");
+        }
     }
     
     /**
