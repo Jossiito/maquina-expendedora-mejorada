@@ -16,6 +16,8 @@ public class MaquinaExpendedoraMejorada {
     private boolean maquinaPremios;
     // Numero maximo de billetes que puede imprimir la maquina 
     private int billetesMaximosImprimir;
+    // Cada tres billetes imprime el premio
+    private int imprimirCadaTresBilletes;
     
     /**
      * Crea una maquina expendedora de billetes de tren con el 
@@ -31,6 +33,7 @@ public class MaquinaExpendedoraMejorada {
         numeroBilletesVendidos = 0;
         maquinaPremios = maquinaConPremio;
         billetesMaximosImprimir = billetesMaximosQuePuedeImprimir;
+        imprimirCadaTresBilletes = 0;
     }
 
     /**
@@ -90,8 +93,12 @@ public class MaquinaExpendedoraMejorada {
                 numeroBilletesVendidos = numeroBilletesVendidos + 1;
             
                 if (maquinaPremios == true) {
-                    float descuentoBillete = (precioBillete*10)/100; 
-                    System.out.println("Con esta compra tiene un descuento de " + descuentoBillete + " euros ");
+                    imprimirCadaTresBilletes = imprimirCadaTresBilletes + 1;
+                    if (imprimirCadaTresBilletes == 3) {   
+                        float descuentoBillete = (precioBillete*10)/100; 
+                        System.out.println("Con esta compra tiene un descuento de " + descuentoBillete + " euros ");
+                        imprimirCadaTresBilletes = imprimirCadaTresBilletes - 3;
+                    }
                 }
             } 
             else {
